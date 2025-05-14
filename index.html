@@ -1,0 +1,39 @@
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+<div class="bg-blue-200 h-1/2 flex items-center justify-center">
+    <div class="text-xl">We now have <span id="number" class="font-bold">0</span> daily active users</div>
+</div>
+<div class="h-1/2 bg-red-200"></div>
+
+<script>
+    function count() {
+        const numberElement = document.getElementById('number');
+        const users = 2210;
+        let i = users * 0.95;
+
+        function slow(i, users) {
+            const progress = i / users;
+
+            if (progress < 0.9) {
+                return 1;
+            } else {
+                const easedProgress = (progress - 0.9) / 0.1;
+                const slowdown = 1 + Math.pow(easedProgress, 4) * 150;
+
+                return slowdown;
+            }
+        }
+
+        function update() {
+            if (i <= users) {
+                numberElement.textContent = Math.round(i);
+                i++;
+                setTimeout(update, slow(i, users));
+            }
+        }
+
+        update();
+    }
+
+    count();
+</script>
