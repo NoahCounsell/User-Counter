@@ -1,4 +1,4 @@
 # On page load counter
-A simple counter for numbers on the page, no use justa  cool effect
+A simple counter for numbers on the page
 
 ![](gif)
